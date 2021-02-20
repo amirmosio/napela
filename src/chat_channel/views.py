@@ -23,17 +23,6 @@ def get_prev_messages(request, to_contact_id):
     return HttpResponse(json.dumps({'prev_messages': [chat.to_json() for chat in prev_messages], 'contact_info': contact_user}))
 
 
-# def popup_chat_page(request):
-#     """View function for home page of site."""
-#     # TODO adding auth and getting prev messages after adding user table
-#     u1 = User()
-#     u1.first_name = "aa"
-#     u1.last_name = "aa"
-#     u2 = User()
-#     u2.first_name = "bb"
-#     u2.last_name = "bb"
-#     context = {'contacts': [u1, u2]}
-#     return render(request, 'chat_channel/popup_chat_page.html', context=context)
 
 @login_required
 def chat_page_with_contact(request, to_user_id):

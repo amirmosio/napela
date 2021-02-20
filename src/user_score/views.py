@@ -15,7 +15,6 @@ links = [{"href": "/", "class": "item", "title": "صفحه اصلی"},
 
 
 @login_required
-@user_passes_test(lambda u: u.is_superuser)
 def set_advertisement_addresser_and_done(request, ad_id):
     ad: BookAd = get_object_or_404(BookAd, pk=ad_id)
     addresser_username = request.POST.get('addresser_username')
@@ -32,14 +31,14 @@ def set_advertisement_addresser_and_done(request, ad_id):
 @login_required
 def give_score(request, ad_id):
     ad: BookAd = get_object_or_404(BookAd, pk=ad_id)
-    score = int(request.POST.get("score", 1))
+    score = int(request.POST.get("score", '1'))
     if ad.addresser == request.user and 1 <= score <= 5:
         if AdScore.objects.filter(pk=ad).count() == 0:
             ad_score = AdScore()
         else:
             ad_score = get_object_or_404(AdScore, pk=ad)
         ad_score.score_owner = ad.addresser
-        ad_score.score = request.POST.get("score", 1)
+        ad_score.score = score
         ad_score.advertisement = ad
         ad_score.save()
         return HttpResponseRedirect(reverse('BookAdvertisement:ad', args=[ad_id]))
