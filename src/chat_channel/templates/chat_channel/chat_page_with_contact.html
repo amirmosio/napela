@@ -27,14 +27,14 @@
         </div>
     </li>
 </script>
-<link href="{% static 'css//chat_page_with_contact.css'%}" rel="stylesheet">
+<link href="{% static 'css/chat_page_with_contact.css'%}" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="{% static 'js//List.js' %}"></script>
-<script src="{% static 'js//jquery.min.js' %}"></script>
-<script src="{% static 'js//HandleBars.js' %}"></script>
-<script src="{% static 'js//reconnecting-websocket.min.js' %}"></script>
-<script src="{% static 'js//socket_message_class.js' %}"></script>
-<script src="{% static 'js//chat_page_with_contact.js'%}"></script>
+<script src="{% static 'js/List.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/HandleBars.js' %}"></script>
+<script src="{% static 'js/reconnecting-websocket.min.js' %}"></script>
+<script src="{% static 'js/socket_message_class.js' %}"></script>
+<script src="{% static 'js/chat_page_with_contact.js'%}"></script>
 <script>
         main({{request.user.id|default_if_none:'null'}},{{to_contact_id|default_if_none:'null'}},{{to_user_id|default_if_none:'null'}});
 
